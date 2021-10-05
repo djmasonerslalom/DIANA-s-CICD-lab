@@ -45,10 +45,11 @@ jobs:
           apt-get update && apt-get install libpq-dev
           pipx install meltano
           meltano install
+          
       # Run the pipeline using meltano
-      - name: run the extract-load pipeline
+      - name: Run the extract-load pipeline
         run: |
-          meltano elt tap-carbon-intensity-target-jsonl
+          meltano elt tap-carbon-intensity target-jsonl
           echo "Extract-load completed successfully!"
 
       # Upload output files as CI artifacts
@@ -61,3 +62,4 @@ jobs:
             output
             !output/**/*.md
           retention-days: 2  # Remove artifacts after 2 days
+
